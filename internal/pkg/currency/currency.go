@@ -20,7 +20,7 @@ func NewCurrencyCache() *CurrencyCache {
 	return &CurrencyCache{}
 }
 
-func (c *CurrencyCache) UpdaCurrencyCacheCache(s *CurrencyService) error {
+func (c *CurrencyCache) UpdaCurrencyCache(s *CurrencyService) error {
 	c.Currency = map[string]*Currency{}
 	currencies, err := s.GetAll()
 	if err != nil {

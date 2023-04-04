@@ -38,7 +38,7 @@ func (c *Cache) UpdateCache(config config.Config, symbols []string) error {
 	currencyService := currency.NewCurrencyService(config, client)
 	go func() {
 		for {
-			err := c.CurrencyCache.UpdaCurrencyCacheCache(currencyService)
+			err := c.CurrencyCache.UpdaCurrencyCache(currencyService)
 			c.l.Println("[Info] Currency caching complete")
 			if err != nil {
 				c.l.Printf("Error updating currency cache: %v", err)

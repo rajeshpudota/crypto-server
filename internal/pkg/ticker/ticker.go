@@ -58,19 +58,19 @@ func (c *TickerCache) UpdateTickerCache(config config.Config, symbols []string) 
 				continue
 			}
 
-			// Avoid acknowledgement response
+			// Ignore acknowledgement response
 			if _, ok := data["data"]; !ok {
 				continue
 			}
 
-			// parse ticket response
-			var ticketData WebSocketTicketResponse
-			if err = json.Unmarshal(message, &ticketData); err != nil {
+			// parse ticker response
+			var tickerData WebSocketTickerResponse
+			if err = json.Unmarshal(message, &tickerData); err != nil {
 				log.Println("Error parsing WebSocket message:", err)
 				continue
 			}
 
-			for symbol, data := range ticketData.Data {
+			for symbol, data := range tickerData.Data {
 				ticker := Ticker{
 					Symbol: symbol,
 					T:      data["t"].(float64),
@@ -83,7 +83,7 @@ func (c *TickerCache) UpdateTickerCache(config config.Config, symbols []string) 
 				}
 				c.UpdateTicker(ticker)
 			}
-			log.Println("Upated ticket cache")
+			log.Println("Upated ticker cache")
 		}
 	}()
 

@@ -32,7 +32,7 @@ func NewWebSocketRequest(method, channel string, symbols []string) WebSocketRequ
 	}
 }
 
-type WebSocketTicketResponse struct {
+type WebSocketTickerResponse struct {
 	Ch   string                            `json:"ch"`
 	Data map[string]map[string]interface{} `json:"data"`
 }
